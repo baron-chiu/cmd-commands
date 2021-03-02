@@ -1,0 +1,4 @@
+# parallel helps when some io operation becomes really slow and there are a lot of files to be synced
+# -vvv for rsync shows more information so you will know if it actually hangs or there's some parameter causing the slow speed
+
+find ./{SRC} | parallel -j 10 rsync -vvvhPrt --append --inplace --relative "{}" {DEST}
